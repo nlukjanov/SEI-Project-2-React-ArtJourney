@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Loading from './Loading'
 
-class ArtCard extends React.Component {
+class ArtCollection extends React.Component {
   state = {
     imageStatus: 0
   }
@@ -11,10 +11,9 @@ class ArtCard extends React.Component {
     this.setState({ imageStatus: this.state.imageStatus + 1 })
   }
   render() {
-    console.log(this.state)
     return (
       <section className='section result-page'>
-        {this.state.imageStatus < 30 && <Loading />}
+        {this.state.imageStatus < 10 && <Loading />}
         <div
           className={`columns is-mobile is-multiline ${
             (this.state.imageStatus.length < 30) ? 'cards-hidden' : ''
@@ -57,4 +56,4 @@ class ArtCard extends React.Component {
   }
 }
 
-export default ArtCard
+export default ArtCollection

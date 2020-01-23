@@ -11,41 +11,40 @@
 }
 
 .slideOutUp {
-  -webkit-animation-name: slideOutUp;
-  animation-name: slideOutUp;
+  transform: translateY(-400px);
 }
 
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
+// .animated {
+//   -webkit-animation-duration: 0.8s;
+//   animation-duration: 0.8s;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+// }
 
-@-webkit-keyframes slideOutUp {
-  from {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  to {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
-  }
-}
+// @-webkit-keyframes slideOutUp {
+//   from {
+//     -webkit-transform: translateY(-400px);
+//     transform: translateY(-400px);
+//   }
+//   to {
+//     -webkit-transform: translateY(-400px);
+//     transform: translateY(-400px);
+//   }
+// }
 
-@keyframes slideOutUp {
-  from {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  to {
-    -webkit-transform: translateY(-200px);
-    transform: translateY(-200px);
-  }
-}
+// @keyframes slideOutUp {
+//   from {
+//     -webkit-transform: translateY(-400px);
+//     transform: translateY(-400px);
+//   }
+//   to {
+//     -webkit-transform: translateY(-400px);
+//     transform: translateY(-400px);
+//   }
+// }
 
 .result-page {
-  margin-top: -450px;
+  margin-top: -680px;
 }
 
 .image-index {
@@ -67,6 +66,39 @@
   padding: 5px;
   margin-top: 15px;
   border-radius: 3px;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  * {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.search-block {
+  display: flex;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-item {
+  cursor: pointer;
+}
+
+
+.button.is-fullwidth {
+  margin-top: 20px;
+}
+
+#h1 {
+  margin-bottom: 30px;
 }
 
 // ART CARD
@@ -171,4 +203,12 @@
 
 .cards-hidden {
   visibility: hidden;
+}
+
+.footer-text {
+  padding: 20px;
+}
+
+.header-text {
+  padding: 12px;
 }
