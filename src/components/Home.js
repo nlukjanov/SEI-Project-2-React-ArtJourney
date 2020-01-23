@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ArtCard from './ArtCard'
 import axios from 'axios'
+import Loading from './Loading'
 
 const apikey = process.env.API_KEY
 
@@ -9,6 +10,7 @@ class Home extends Component {
     input: '',
     storedInput: '',
     artPieces: [],
+    isTyping: false,
     hasSearched: false
   }
 
@@ -19,7 +21,11 @@ class Home extends Component {
         `https://www.rijksmuseum.nl/api/en/collection?key=${apikey}&imgonly=True&ps=30&q='${this.state.input}'`
       )
       this.setState({ storedInput: this.state.input })
-      this.setState({ input: '', artPieces: res.data.artObjects })
+      this.setState({
+        input: '',
+        artPieces: res.data.artObjects,
+        hasSearched: true
+      })
       console.log(res.data)
     } catch (err) {
       console.log(err)
@@ -27,7 +33,7 @@ class Home extends Component {
   }
 
   handleChange = e => {
-    this.setState({ input: e.target.value, hasSearched: true })
+    this.setState({ input: e.target.value, isTyping: true })
     // make request to get data
   }
 
@@ -35,7 +41,7 @@ class Home extends Component {
     return (
       <>
         <section className='section home-begin'>
-          <div className={this.state.hasSearched ? 'slideOutUp animated' : ''}>
+          <div className={this.state.isTyping ? 'slideOutUp animated' : ''}>
             <h1 className='title is-1 has-text-centered'>Art Journey</h1>
             <form onSubmit={this.handleSubmit}>
               <div className='field'>
@@ -52,17 +58,20 @@ class Home extends Component {
                 </label>
               </div>
             </form>
-            <div className={`is-capitalized ${this.state.storedInput ? 'search-result' : ''}`}>{this.state.storedInput}</div>
+            <div
+              className={`is-capitalized ${
+                this.state.storedInput ? 'search-result' : ''
+              }`}
+            >
+              {this.state.storedInput}
+            </div>
           </div>
         </section>
-        <section className='section result-page'>
-          <div className='columns is-mobile is-multiline'>
-            {this.state.artPieces.map(piece => (
-              <ArtCard key={piece.id} {...piece} />
-            ))}
-          </div>
-        </section>
-
+        {this.state.hasSearched && this.state.artPieces.length > 0 ? (
+          <ArtCard data={this.state} />
+        ) : (
+          this.state.hasSearched && <section className='container result-page has-text-centered'>Nothing found</section>
+        )}
       </>
     )
   }
