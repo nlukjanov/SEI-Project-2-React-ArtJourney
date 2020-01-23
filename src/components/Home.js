@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import ArtCollection from './ArtCollection'
 import axios from 'axios'
+
+import ArtCollection from './ArtCollection'
+import { Link } from 'react-router-dom'
+import Loading from './Loading'
 
 const apikey = process.env.API_KEY
 
@@ -10,7 +13,9 @@ class Home extends Component {
     storedInput: '',
     artPieces: [],
     isTyping: false,
-    hasSearched: false
+    hasSearched: false,
+    loaded: false,
+    imageCounter: 0
   }
 
   handleSubmit = async e => {
@@ -24,7 +29,9 @@ class Home extends Component {
       this.setState({
         input: '',
         artPieces: res.data.artObjects,
-        hasSearched: true
+        hasSearched: true,
+        imageCounter: 0,
+        loaded: false
       })
       console.log(res.data)
     } catch (err) {
@@ -39,7 +46,9 @@ class Home extends Component {
       storedInput: '',
       artPieces: [],
       isTyping: false,
-      hasSearched: false
+      hasSearched: false,
+      imageCounter: 0,
+      loaded: false
     })
   }
 
@@ -68,7 +77,18 @@ class Home extends Component {
     this.setState({ input: e.target.value, isTyping: true })
   }
 
+  handleOnLoad = () => {
+    if (this.state.imageCounter === this.state.artPieces.length) {
+      this.setState({ loaded: true })
+    }
+    this.setState({
+      imageCounter: this.state.imageCounter + 1
+    })
+  }
+
   render() {
+    console.log(this.state.imageCounter)
+    console.log(this.state.artPieces.length)
     return (
       <>
         {this.state.artPieces[0] && (
@@ -130,7 +150,46 @@ class Home extends Component {
           </div>
         </section>
         {this.state.hasSearched && this.state.artPieces.length > 0 ? (
-          <ArtCollection data={this.state} />
+          <section className='section result-page'>
+            {!this.state.loaded && <Loading />}
+            <div
+              className={`columns is-mobile is-multiline ${
+                this.state.loaded ? 'cards-visible' : 'cards-hidden'
+              }`}
+            >
+              {this.state.artPieces.map(piece => (
+                <div
+                  key={piece.id}
+                  className='column is-one-quarter-desktop is-one-third-tablet is-half-mobile'
+                >
+                  <Link to={`/art/${piece.objectNumber}`}>
+                    <div className='card'>
+                      <div className='card-header'>
+                        <h4 className='card-header-title is-centered'>
+                          {piece.title}
+                        </h4>
+                      </div>
+                      <div className='card-image'>
+                        <figure className='image-index'>
+                          <img
+                            onLoad={this.handleOnLoad}
+                            className='image-index'
+                            src={piece.webImage.url}
+                            alt={piece.title}
+                          />
+                        </figure>
+                      </div>
+                      <div className='card-content'>
+                        <h5 className='is-6 has-text-centered'>
+                          By {piece.principalOrFirstMaker}
+                        </h5>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
         ) : (
           this.state.hasSearched && (
             <section className='container result-page has-text-centered'>
