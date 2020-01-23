@@ -10,7 +10,7 @@ const ArtCard = (piece) => {
       <Link to={`/art/${piece.objectNumber}`} >
         <div className='card'>
           <div className='card-header'>
-            <h4 className='card-header-title'>{piece.title}</h4>
+            <h4 className='card-header-title is-centered'>{piece.title}</h4>
           </div>
           <div className='card-image'>
             <figure className='image-index'>
@@ -18,8 +18,8 @@ const ArtCard = (piece) => {
             </figure>
           </div>
           <div className='card-content'>
-            <h5 className='title is-6'>
-              {piece.principalOrFirstMaker}
+            <h5 className='is-6 has-text-centered'>
+              By {piece.principalOrFirstMaker}
             </h5>
           </div>
         </div>

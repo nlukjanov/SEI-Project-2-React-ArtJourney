@@ -1,25 +1,91 @@
-// to make our card heights the same 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.home-begin {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slideOutUp {
+  -webkit-animation-name: slideOutUp;
+  animation-name: slideOutUp;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideOutUp {
+  from {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+  }
+}
+
+.result-page {
+  margin-top: -450px;
+}
+
+.image-index {
+  object-fit: cover;
+}
+
 .card {
   height: 100%;
   display:flex;
   flex-direction: column;
 }
+
 .card-content {
     margin-top: auto;
 }
 
-.image-index {
-  width: 200px;
-  height: auto;
+.search-result {
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 15px;
 }
 
+
+// ART CARD
 .image img {
   display: block;
-  max-height: 500px;
+  max-height: 800px;
   width: auto;
 }
 
 .is-horizontal-center {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.color-box {
+  height: 20px;
+  width: 20px;
+}
+
+.color-palette {
+  display: flex;
 }

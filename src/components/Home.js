@@ -8,7 +8,8 @@ class Home extends Component {
   state = {
     input: '',
     storedInput: '',
-    artPieces: []
+    artPieces: [],
+    hasSearched: false
   }
 
   handleSubmit = async e => {
@@ -26,44 +27,42 @@ class Home extends Component {
   }
 
   handleChange = e => {
-    this.setState({ input: e.target.value })
+    this.setState({ input: e.target.value, hasSearched: true })
     // make request to get data
   }
 
   render() {
-    console.log(this.state)
     return (
       <>
-        <section className='section'>
-          <div>
-            <img src='' alt='' />
+        <section className='section home-begin'>
+          <div className={this.state.hasSearched ? 'slideOutUp animated' : ''}>
+            <h1 className='title is-1 has-text-centered'>Art Journey</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div className='field'>
+                <label className='label'>
+                  <div className='control'>
+                    <input
+                      onChange={this.handleChange}
+                      placeholder='search'
+                      type='text'
+                      className='input'
+                      value={this.state.input}
+                    />
+                  </div>
+                </label>
+              </div>
+            </form>
+            <div className={`is-capitalized ${this.state.storedInput ? 'search-result' : ''}`}>{this.state.storedInput}</div>
           </div>
         </section>
-        <section>
-          <form onSubmit={this.handleSubmit}>
-            <div className='field'>
-              <label className='label'>
-                <div className='control'>
-                  <input
-                    onChange={this.handleChange}
-                    placeholder='search'
-                    type='text'
-                    className='input'
-                    value={this.state.input}
-                  />
-                </div>
-              </label>
-            </div>
-          </form>
-          <div>{this.state.storedInput}</div>
-        </section>
-        <section className='section'>
+        <section className='section result-page'>
           <div className='columns is-mobile is-multiline'>
             {this.state.artPieces.map(piece => (
               <ArtCard key={piece.id} {...piece} />
             ))}
           </div>
         </section>
+
       </>
     )
   }
