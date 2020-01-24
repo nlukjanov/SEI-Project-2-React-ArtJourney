@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import ArtCollection from './ArtCollection'
+import ArtCollection from '../artpages/ArtCollection'
 import Loading from './Loading'
 
 const apikey = process.env.API_KEY

@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 
-import ArtCardHorizontal from './common/artpages/ArtCardHorizontal'
-import ArtCardVertical from './common/artpages/ArtCardVertical'
-import ArtError from './common/artpages/ArtError'
+import ArtCardHorizontal from './ArtCardHorizontal'
+import ArtCardVertical from './ArtCardVertical'
+import ArtError from './ArtError'
 
 const apikey = process.env.API_KEY
 
@@ -45,9 +45,3 @@ class ShowArt extends React.Component {
 }
 
 export default ShowArt
-
-// title
-// webImage.url
-// principalMakers (array with objects)[0].name
-// plaqueDescriptionEnglish
-// dating.presentingDate

@@ -22,7 +22,7 @@ body {
   background-position: center;
 }
 
-.header-img-container{
+.header-img-container {
   display: flex;
   justify-content: center;
   margin-top: -130px;
@@ -97,7 +97,6 @@ body {
 .navbar-item {
   cursor: pointer;
 }
-
 
 .button.is-fullwidth {
   margin-top: 20px;
@@ -228,7 +227,7 @@ body {
   z-index: -2;
   a {
     color: #595959;
-    &:hover{
+    &:hover {
       color: black;
     }
   }
@@ -237,9 +236,9 @@ body {
 .header-text {
   padding: 12px;
   border-radius: 5px;
-  -webkit-box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
-  -moz-box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
-  box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
+  -webkit-box-shadow: 10px 10px 5px -9px rgba(179, 179, 179, 1);
+  -moz-box-shadow: 10px 10px 5px -9px rgba(179, 179, 179, 1);
+  box-shadow: 10px 10px 5px -9px rgba(179, 179, 179, 1);
 }
 
 .nothing-text {
@@ -249,11 +248,48 @@ body {
 
 .artist-search {
   cursor: pointer;
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }
 
 .horizontal-info {
   margin-top: 40px;
+}
+
+@media only screen and (max-width: 1050px) {
+  .header-img-container {
+    margin-top: -80px;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .header-img-container {
+    margin-top: -80px;
+  }
+  .slideOutUp {
+    transform: translateY(-290px);
+  }
+}
+@media only screen and (max-width: 888px) {
+  .header-img-container {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .header-text {
+    font-size: medium;
+  }
+  .slideOutUp {
+    transform: translateY(-300px);
+  }
+  .result-page {
+    margin-top: -490px;
+  }
+  .search-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
 }

@@ -5,9 +5,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import 'bulma'
 import './stylesheets/main.scss'
 
-import Home from './components/Home'
-import ShowArt from './components/ShowArt'
-import Footer from './components/Footer'
+import Home from './components/common/Home'
+import ShowArt from './components/artpages/ShowArt'
+// import Footer from './components/common/Footer'
 
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
             <Route path='/:query' component={Home} />
           </Switch>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     )
   }

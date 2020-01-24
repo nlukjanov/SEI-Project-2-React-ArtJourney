@@ -1,9 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-
-import ArtCardHorizontal from './common/artpages/ArtCardHorizontal'
-import ArtCardVertical from './common/artpages/ArtCardVertical'
-import ArtError from './common/artpages/ArtError'
+import ArtCardHorizontal from './ArtCardHorizontal'
+import ArtCardVertical from './ArtCardVertical'
+import ArtError from './ArtError'
 
 const apikey = process.env.API_KEY
 
