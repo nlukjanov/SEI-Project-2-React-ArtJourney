@@ -20,7 +20,7 @@ class ShowArt extends React.Component {
       )
       this.setState({ artPiece: res.data.artObject })
     } catch (err) {
-      console.log(err)
+      this.props.history.push('/error')
     }
   }
 

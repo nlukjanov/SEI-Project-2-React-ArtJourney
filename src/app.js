@@ -7,6 +7,7 @@ import './stylesheets/main.scss'
 
 import Home from './components/common/Home'
 import ShowArt from './components/artpages/ShowArt'
+import ErrorPage from './components/common/ErrorPage'
 // import Footer from './components/common/Footer'
 
 
@@ -18,6 +19,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/art/:id' component={ShowArt} />
+            <Route path='/error' component={ErrorPage} />
             <Route path='/:query' component={Home} />
           </Switch>
         </main>

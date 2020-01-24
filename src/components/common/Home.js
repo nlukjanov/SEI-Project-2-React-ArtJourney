@@ -34,6 +34,7 @@ class Home extends Component {
       })
     } catch (err) {
       console.log(err)
+      this.props.history.push('/error')
     }
   }
 
@@ -68,6 +69,7 @@ class Home extends Component {
       })
     } catch (err) {
       console.log(err)
+      this.props.history.push('/error')
     }
   }
 
