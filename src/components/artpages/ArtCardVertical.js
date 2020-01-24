@@ -2,16 +2,49 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Magnifier from 'react-magnifier'
 import Loading from '../common/Loading'
+import axios from 'axios'
+import MapGL, { Marker, NavigationControl } from 'react-map-gl'
+
+const mapboxToken = process.env.MAPBOX_ACCESS_TOKEN
 
 class ArtCardVertical extends React.Component {
   state = {
-    imageLoaded: false
+    imageLoaded: false,
+    viewport: {
+      latitude: 0,
+      longitude: 0,
+      zoom: 6,
+      bearing: 0,
+      pitch: 0
+    },
+    lat: 0,
+    lng: 0
   }
 
   handleOnLoad = () => {
     this.setState({
       imageLoaded: true
     })
+  }
+
+  async componentDidMount() {
+    try {
+      const res = await axios.get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.productionPlaces}.json?access_token=${mapboxToken}`
+      )
+      this.setState({
+        ...this.state,
+        viewport: {
+          ...this.state.viewport,
+          latitude: res.data.features[0].center[1],
+          longitude: res.data.features[0].center[0]
+        },
+        lat: res.data.features[0].center[1],
+        lng: res.data.features[0].center[0]
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render() {
@@ -72,6 +105,25 @@ class ArtCardVertical extends React.Component {
             </div>
           </div>
           <div className='column'></div>
+        </div>
+        <div className='map'>
+          {this.props.productionPlaces.length > 0 && (
+            <MapGL
+              mapboxApiAccessToken={mapboxToken}
+              height={'280px'}
+              width={'100%'}
+              mapStyle='mapbox://styles/mapbox/light-v10'
+              {...this.state.viewport}
+              onViewportChange={viewport => this.setState({ viewport })}
+            >
+              <div style={{ position: 'absolute', right: 0 }}>
+                <NavigationControl />
+              </div>
+              <Marker latitude={this.state.lat} longitude={this.state.lng}>
+                <div>🎨</div>
+              </Marker>
+            </MapGL>
+          )}
         </div>
       </>
     )
