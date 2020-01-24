@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
 import 'bulma'
 import './stylesheets/main.scss'
 
 import Home from './components/Home'
 import ShowArt from './components/ShowArt'
 import Footer from './components/Footer'
+
 
 class App extends React.Component {
   render() {

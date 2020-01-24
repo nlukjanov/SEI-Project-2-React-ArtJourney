@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import ArtCardHorizontal from './ArtCardHorizontal'
 import ArtCardVertical from './ArtCardVertical'
+import ArtError from './ArtError'
 
 const apikey = process.env.API_KEY
 
@@ -25,7 +26,6 @@ class ShowArt extends React.Component {
   }
 
   render() {
-    console.log(this.props.history)
     const { artPiece } = this.state
     if (!artPiece) return null
     return (
@@ -35,11 +35,9 @@ class ShowArt extends React.Component {
             <button className='button' onClick={this.props.history.goBack}>
               Back
             </button>
-            {artPiece.webImage.width > artPiece.webImage.height ? (
-              <ArtCardHorizontal {...artPiece} />
-            ) : (
-              <ArtCardVertical {...artPiece} />
-            )}
+            {!artPiece.webImage ? <ArtError /> :
+              (artPiece.webImage.width > artPiece.webImage.height ? (<ArtCardHorizontal {...artPiece} />) : (<ArtCardVertical {...artPiece} />))
+            }
           </div>
         </section>
       </>

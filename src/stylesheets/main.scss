@@ -1,6 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oxygen:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Signika:700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  background-color: #f1f1f1;
+  z-index: -2;
+  position: relative;
+}
+
+.frame-img {
+  background-image: url('../assets/frame-white.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.header-img-container{
+  display: flex;
+  justify-content: center;
+  margin-top: -130px;
+}
+
+.header-img {
+  z-index: -1;
 }
 
 .home-begin {
@@ -11,40 +40,11 @@
 }
 
 .slideOutUp {
-  transform: translateY(-400px);
+  transform: translateY(-345px);
 }
 
-// .animated {
-//   -webkit-animation-duration: 0.8s;
-//   animation-duration: 0.8s;
-//   -webkit-animation-fill-mode: both;
-//   animation-fill-mode: both;
-// }
-
-// @-webkit-keyframes slideOutUp {
-//   from {
-//     -webkit-transform: translateY(-400px);
-//     transform: translateY(-400px);
-//   }
-//   to {
-//     -webkit-transform: translateY(-400px);
-//     transform: translateY(-400px);
-//   }
-// }
-
-// @keyframes slideOutUp {
-//   from {
-//     -webkit-transform: translateY(-400px);
-//     transform: translateY(-400px);
-//   }
-//   to {
-//     -webkit-transform: translateY(-400px);
-//     transform: translateY(-400px);
-//   }
-// }
-
 .result-page {
-  margin-top: -680px;
+  margin-top: -570px;
 }
 
 .image-index {
@@ -55,6 +55,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+  // background-color: transparent;
+  background-color: #f1f1f1;
+}
+
+.card-header-title {
+  font-size: 18px;
+  font-family: 'Signika', sans-serif;
 }
 
 .card-content {
@@ -62,10 +70,7 @@
 }
 
 .search-result {
-  border: 1px solid black;
-  padding: 5px;
-  margin-top: 15px;
-  border-radius: 3px;
+  pointer-events: none;
 }
 
 .search-input {
@@ -81,6 +86,7 @@
 
 .search-block {
   display: flex;
+  margin-top: 10px;
 }
 
 .navbar-brand {
@@ -133,7 +139,8 @@
 .sk-cube-grid .sk-cube {
   width: 33%;
   height: 33%;
-  background-color: #333;
+  border-radius: 100%;
+  background-color: #595959;
   float: left;
   -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -211,8 +218,42 @@
 
 .footer-text {
   padding: 20px;
+  position: fixed;
+  max-height: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+  background-color: #f1f1f1;
+  z-index: -2;
+  a {
+    color: #595959;
+    &:hover{
+      color: black;
+    }
+  }
 }
 
 .header-text {
   padding: 12px;
+  border-radius: 5px;
+  -webkit-box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
+  -moz-box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
+  box-shadow: 10px 10px 5px -9px rgba(179,179,179,1);
+}
+
+.nothing-text {
+  margin-top: -180px;
+  margin-bottom: 180px;
+}
+
+.artist-search {
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.horizontal-info {
+  margin-top: 40px;
 }
