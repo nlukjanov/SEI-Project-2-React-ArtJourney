@@ -1,8 +1,8 @@
+require('dotenv').config()
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const DotEnv = require('dotenv-webpack')
 
 module.exports = {
   entry: './src/app.js',
@@ -15,14 +15,32 @@ module.exports = {
     rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
-      { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
+      {
+        test: /\.s(a|c)ss$/,
+        loader: ['style-loader', 'css-loader', 'sass-loader']
+      },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
       { test: /\.(woff|woff2)$/, loader: 'url-loader?prefix=font/&limit=5000' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' },
-      { test: /\.jpe?g(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/jpeg' },
-      { test: /\.gif(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/gif' },
-      { test: /\.png(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/png' }
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+      },
+      {
+        test: /\.jpe?g(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/jpeg'
+      },
+      {
+        test: /\.gif(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/gif'
+      },
+      {
+        test: /\.png(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/png'
+      }
     ]
   },
   devServer: {
@@ -34,15 +52,13 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    new DotEnv(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: 'index.html',
       inject: 'body'
     }),
-    new CopyWebpackPlugin([
-      { from: './src/assets', to: 'assets' }
-    ])
+    new CopyWebpackPlugin([{ from: './src/assets', to: 'assets' }]),
+    new webpack.EnvironmentPlugin(['MUSEUM_API_KEY', 'MAPBOX_ACCESS_TOKEN'])
   ]
 }

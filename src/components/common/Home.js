@@ -4,7 +4,7 @@ import axios from 'axios'
 import ArtCollection from '../artpages/ArtCollection'
 import Loading from './Loading'
 
-const apikey = process.env.API_KEY
+const apikey = process.env.MUSEUM_API_KEY
 
 class Home extends Component {
   state = {

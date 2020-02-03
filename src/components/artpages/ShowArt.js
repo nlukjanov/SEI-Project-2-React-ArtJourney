@@ -5,7 +5,7 @@ import ArtCardHorizontal from './ArtCardHorizontal'
 import ArtCardVertical from './ArtCardVertical'
 import ArtError from './ArtError'
 
-const apikey = process.env.API_KEY
+const apikey = process.env.MUSEUM_API_KEY
 
 class ShowArt extends React.Component {
   state = {
