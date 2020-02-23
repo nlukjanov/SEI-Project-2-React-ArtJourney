@@ -15,7 +15,7 @@ Your app must:
 * Have **semantically clean HTML** - you make sure you write HTML that makes structural sense rather than thinking about how it might look, which is the job of CSS.
 * **Be deployed online** and accessible to the public.
 
-**Timeframe**: 2 days of pair coding with [Dide Martens](https://github.com/didemertens)
+**Timeframe**: 2 days of pair coding with [Dide Mertens](https://github.com/didemertens)
 
 [Link to live website](https://artjourney-by-nl.herokuapp.com/)
 
