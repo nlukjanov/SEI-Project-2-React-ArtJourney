@@ -47,7 +47,7 @@ While choosing the API we looked at the following conditions:
 Rijks Museum API checked all the boxes. And the quality of images they provide is amazing.
 
 ### Features
-The website has a simple structure. Homepage has a search bar. When you type in and search for something it move a bit higher and search collection is shown below. We have limited the amount of results to 30 at the moment. If you click on one of the images it leads you to the image show page. Show page can be vertical or horizontal depending on the original image. There is a Loading component that shows until the images are loaded. We have implemented magnifying glass using external component.
+The website has a simple structure. Homepage has a search bar. When you type in and search for something it move a bit higher and search collection is shown below. We have limited the amount of results to 30 at the moment. If you click on one of the images it leads you to the image show page. Show page can be vertical or horizontal depending on the original image. There is a loading component that shows until the images are loaded. It was a bit tricky to implement, because we were using 'loaded' attribute of images, that we did not want to show until they are loaded. We have solved it by applying attribute 'invisible'. This way we had access to the ```img``` elements, but did not show them until they are loaded. We have implemented magnifying glass using external component.
 
 ![Screenshot of the App](readme/search.png)
 
