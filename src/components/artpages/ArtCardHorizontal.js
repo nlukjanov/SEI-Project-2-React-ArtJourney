@@ -30,7 +30,8 @@ class ArtCardHorizontal extends React.Component {
   async componentDidMount() {
     try {
       const res = await axios.get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.productionPlaces}.json?access_token=${mapboxToken}`
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${this.props.productionPlaces}.json`,
+        { params: { access_token: mapboxToken } }
       )
       this.setState({
         ...this.state,

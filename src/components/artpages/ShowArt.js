@@ -16,7 +16,8 @@ class ShowArt extends React.Component {
     const artId = this.props.match.params.id
     try {
       const res = await axios.get(
-        `https://www.rijksmuseum.nl/api/en/collection/${artId}?key=${apikey}`
+        `https://www.rijksmuseum.nl/api/en/collection/${artId}?key=${apikey}`,
+        { params: { key: apikey } }
       )
       this.setState({ artPiece: res.data.artObject })
     } catch (err) {
