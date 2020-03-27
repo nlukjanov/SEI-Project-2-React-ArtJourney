@@ -61,6 +61,10 @@ We used bulma as much as possible, but also wrote some custom CSS. Using Sass si
 
 ## Reflection
 
+### Key Learnings
+It was great experience building out React front end with quite a tight deadline. Pair programming is really helpful for focus.
+React is a great library that has a specific work flow. As soon as it clicks it is much faster to progress. However sometimes small visual things require a lot of times to implement. Working with APIs is quite straight forward, but requires attention to spot different data types. I think it is trickier if you are using multiple APIs and combining them in your app.
+
 ### Wins
 - Fully working project deployed online! It is nice to show people your work
 - Great experience of of bug fixing due to inconsistent data provided
